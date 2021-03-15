@@ -1,0 +1,93 @@
+<div *ngIf="data" class="alert alert-success" role="alert">
+        {{message}}    
+  </div>
+ <div class="row">
+    <div class="col-xl-8 order-xl-2">
+      <div class="card card-profile">
+          <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr ngclass="btn-primary">  
+                        <th class="sort">Action</th>
+                        <th class="sort">Id</th>
+                        <th class="sort">Source City</th>  
+                        <th class="sort">Source State</th>
+                        <th class="sort">Source Country</th>
+                        <th class="sort">Destination City</th>
+                        <th class="sort">Destination State</th>
+                        <th class="sort">Destination Country</th>
+                        <th class="sort">Quantity</th>
+                        <th class="sort">Weight</th>
+                        <th class="sort">Rate</th>
+                      </tr>  
+                </thead>
+                <tbody class="list">
+                    <tr *ngFor="let rate of allRate | async">
+                        <td class="text-right">
+                            <div class="dropdown">
+                              <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                &nbsp;&nbsp;&nbsp;<button class="btn btn-info ">Edit</button>
+                                <button class="btn btn-danger " (click)="deleteRate(rate.Id)">Delete</button>
+                              </div>
+                            </div>
+                          </td>
+                        <td>{{ rate.Id }}</td>
+                        <td>{{ rate.SourceCity}}</td>
+                        <td>{{ rate.SourceState}}</td>
+                        <td>{{ rate.SourceCountry}}</td>
+                        <td>{{ rate.DestinationCity}}</td>
+                        <td>{{ rate.DestinationState}}</td>
+                        <td>{{ rate.DestinationCountry}}</td>
+                        <td>{{ rate.Quantity}}</td>
+                        <td>{{ rate.Weight}}</td>
+                        <td>{{ rate.Rate}}</td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+      </div>
+    </div>
+    <div class="col-xl-4 order-xl-1">
+      <div class="card">
+       
+        <div class="card-body">
+            <form [formGroup]="rateForm" (ngSubmit)="onFormSubmit()">  
+                <h1 style="text-align:center">Add Rate</h1>    
+               
+                <div class="input-group mb-3">  
+                  <input type="text" class="form-control" placeholder="SourceCity"  formControlName="SourceCity">  
+                </div>  
+                <div class="input-group mb-3">  
+                  <input type="text" class="form-control" placeholder="SourceState"  formControlName="SourceState">  
+                </div>  
+                <div class="input-group mb-3">  
+                  <input type="text" class="form-control" placeholder="SourceCountry"  formControlName="SourceCountry">  
+                </div>  
+                <div class="input-group mb-3">  
+                  <input type="text" class="form-control" placeholder="DestinationCity"  formControlName="DestinationCity">  
+                </div>  
+                <div class="input-group mb-3">  
+                  <input type="text" class="form-control" placeholder="DestinationState"  formControlName="DestinationState">  
+                </div>  
+                <div class="input-group mb-3">  
+                  <input type="text" class="form-control" placeholder="DestinationCountry"  formControlName="DestinationCountry">  
+                </div>  
+                <div class="input-group mb-3">  
+                  <input type="text" class="form-control" placeholder="Quantity"  formControlName="Quantity">  
+                </div>  
+                <div class="input-group mb-3">  
+                  <input type="text" class="form-control" placeholder="Weight"  formControlName="Weight">  
+                </div>  
+                <div class="input-group mb-3">  
+                  <input type="text" class="form-control" placeholder="TotalRate"  formControlName="TotalRate">  
+                </div>  
+              
+                <button type="submit" class="btn btn-block btn-success">Add Rate</button>  
+              </form>  
+        </div>
+      </div>
+    </div>
+</div>
